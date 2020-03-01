@@ -4,7 +4,9 @@
     <bookmark url="file://$PROJECT_DIR$/BBS/urls.py" line="33" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="16794e11-4bce-4e00-a031-734fb28f5058" name="Default Changelist" comment="" />
+    <list default="true" id="16794e11-4bce-4e00-a031-734fb28f5058" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/BBS/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/BBS/settings.py" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -76,8 +78,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/BBS/settings.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1222">
-              <caret line="149" column="21" selection-start-line="149" selection-start-column="21" selection-end-line="149" selection-end-column="21" />
+            <state relative-caret-position="-1239">
+              <caret line="79" selection-start-line="79" selection-end-line="79" />
               <folding>
                 <element signature="e#308#317#0" expanded="true" />
               </folding>
@@ -362,22 +364,23 @@
       <workItem from="1582886295569" duration="1875000" />
       <workItem from="1582948730645" duration="6591000" />
       <workItem from="1583029437526" duration="5765000" />
-      <workItem from="1583044209681" duration="498000" />
+      <workItem from="1583044209681" duration="1114000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="102023000" />
+    <option name="totallyTimeSpent" value="102639000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="469" y="60" width="1072" height="724" extended-state="0" />
+    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49919224" visible="true" weight="0.26035503" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49919224" visible="true" weight="0.26035503" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" sideWeight="0.50080776" side_tool="true" weight="0.15405117" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32936078" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.49865952" visible="true" weight="0.31514084" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49865952" visible="true" weight="0.31514084" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.37774524" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -673,8 +676,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/BBS/settings.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1222">
-          <caret line="149" column="21" selection-start-line="149" selection-start-column="21" selection-end-line="149" selection-end-column="21" />
+        <state relative-caret-position="-1239">
+          <caret line="79" selection-start-line="79" selection-end-line="79" />
           <folding>
             <element signature="e#308#317#0" expanded="true" />
           </folding>

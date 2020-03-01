@@ -76,17 +76,10 @@ WSGI_APPLICATION = 'BBS.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/1.11/ref/settings/#databases
+import dj_database_url
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': "blog",
-        "USER": "root",
-        "PASSWORD": "",
-        "HOST": "127.0.0.1",
-        "PORT": 3306,
-        "CHARSET": "utf8"
-    }
+    'default': dj_database_url.config(default='postgres://localhost')
 }
 
 
@@ -141,7 +134,6 @@ AUTH_USER_MODEL = "app01.User"
 
 #数据库设置
 if os.getenv('DATABASE_URL') is not None:
-    import dj_database_url
     DATABASES['default'] = dj_database_url.config()
 
 STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
