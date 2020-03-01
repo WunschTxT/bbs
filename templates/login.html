@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="pragma" content="no-cache">
+        <meta http-equiv="cache-control" content="no-cache">
+        <meta http-equiv="expires" content="0">
+        <title>登录</title>
+        {% load static %}
+        <script src="{% static 'js/jquery-3.4.1.min.js' %}"></script>
+        <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+        <script src="{% static 'js/bootstrap.min.js' %}"></script>
+        <link rel="stylesheet" href="{% static 'css/sweetalert.css' %}">
+        <script src="{% static 'js/sweetalert.min.js' %}"></script>
+        <script>
+            $(function () {
+
+                $("#login_btn").on("click",function () {
+                    $.ajax({
+                        url: location.href,
+                        type: "post",
+                        data: new FormData($("#login_form")[0]),
+                        contentType: false,
+                        processData: false,
+                        success: function (res) {
+                            if(res.code == 1000){
+                                {#console.log(res.url);#}
+                                location.href = res.url
+                            }else{
+                                $("#msg").text(res.msg)
+                            }
+                        }
+                    })
+                })
+
+            })
+        </script>
+    </head>
+    <body>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 col-md-offset-4">
+                    <form class="form" id="login_form">
+                        {% csrf_token %}
+                        <div class="form-group">
+                            <label for="username">用户名：</label>
+                            <input type="text" name="username" id="username" class="form-control" placeholder="请输入用户名" />
+                        </div>
+                        <div class="form-group">
+                            <label for="password">密码：</label>
+                            <input type="password" name="password" id="password" class="form-control" placeholder="请输入密码" />
+                        </div>
+                        <div class="row">
+                            <div class="form-group col-md-6">
+                                <label for="check">校验码：</label>
+                                <input type="text" id="check" name="check" class="form-control" placeholder="请输入验证码" >
+                            </div>
+                            <div class="form-group col-md-6">
+                                <img id="CheckCode" src="/getCheck" style="margin-top: 20px" alt="" onclick="this.src += '?'">
+                            </div>
+
+                        </div>
+                    </form>
+                    <button id="login_btn" class="btn btn-success">登录</button>
+                    <span id="msg" style="color: red; font-size: 20px"></span>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>注册</title>
+    {% load static %}
+    <script src="{% static 'js/jquery-3.4.1.min.js' %}"></script>
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
+    <link rel="stylesheet" href="{% static 'css/sweetalert.css' %}">
+    <script src="{% static 'js/sweetalert.min.js' %}"></script>
+    <script>
+        $(function () {
+            $("#avatar").on("change", function () {
+                var fileread = new FileReader();
+                fileread.readAsDataURL($(this)[0].files[0]);
+                fileread.onload = function () {
+                    $("#avatar_img").attr("src", fileread.result)
+                }
+            });
+            $("#register_btn").on("click", function () {
+                $.ajax({
+                    url: "{% url "register" %}",
+                    type: "post",
+                    data: new FormData($("#register_form")[0]),
+                    contentType: false,
+                    processData: false,
+                    success: function (res) {
+                        if (res.code == 2000) {
+                            $.each(res.error, function (index, obj) {
+                                id = "#id_" + index;
+                                $(id).next().text(obj).parent().addClass("has-error")
+                            })
+                        } else if (res.code == 1001) {
+                            $("#msg").text(res.msg)
+                        } else {
+                            location.href = res.url;
+                        }
+                    }
+                })
+            });
+            $("input").on("focus", function () {
+                $(this).next().text("").parent().removeClass("has-error")
+            })
+        });
+    </script>
+</head>
+<body>
+<div class="container">
+    <div class="row">
+        <div class="col-md-4 col-md-offset-4">
+            {% block register %}
+                <form class="form" id="register_form">
+                    {% csrf_token %}
+                    {% for reg_obj in reg %}
+                        <div class="form-group">
+                            <label for="{{ reg_obj.auto_id }}">{{ reg_obj.label }}</label>
+                            {{ reg_obj }}
+                            <span style="color: red"></span>
+                        </div>
+                    {% endfor %}
+                    <div class="form-group">
+                        <label for="avatar">
+                            用户头像：
+                            <img id="avatar_img" src="/media/avatar/default.png" width="150px"/>
+                        </label>
+                        <input id="avatar" type="file" style="display: none;" name="avatar">
+                    </div>
+                </form>
+                <button id="register_btn" class="btn btn-success">注册</button>
+                <span id="msg" style="color: red; font-size: 20px"></span>
+            {% endblock %}
+
+        </div>
+    </div>
+</div>
+</body>
+{% block js %}
+
+{% endblock %}
+</html>

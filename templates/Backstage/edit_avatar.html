@@ -1,0 +1,33 @@
+{% extends "register.html" %}
+
+{% block register %}
+    <form id="edit_form">
+        {% csrf_token %}
+        <div class="form-group">
+            <label for="avatar">
+                用户头像：
+                <img id="avatar_img" src="/media/{{ request.user.avatar }}" width="150px"/>
+            </label>
+            <input id="avatar" type="file" style="display: none;" name="avatar">
+        </div>
+    </form>
+    <button id="edit_btn" class="btn btn-success">修改头像</button>
+    <span id="msg" style="color: red; font-size: 20px"></span>
+{% endblock %}
+
+{% block js %}
+    <script>
+        $("#edit_btn").on("click", function () {
+            $.ajax({
+                url: "",
+                type: "post",
+                data: new FormData($("#edit_form")[0]),
+                contentType: false,
+                processData: false,
+                success: function (res) {
+                    $("#msg").text(res);
+                }
+            })
+        })
+    </script>
+{% endblock %}

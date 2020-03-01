@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>修改密码</title>
+        {% load static %}
+        <script src="{% static 'js/jquery-3.4.1.min.js' %}"></script>
+        <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+        <script src="{% static 'js/bootstrap.min.js' %}"></script>
+        <link rel="stylesheet" href="{% static 'css/sweetalert.css' %}">
+        <script src="{% static 'js/sweetalert.min.js' %}"></script>
+        <script>
+            $(function () {
+                $("#pwd_bt").on("click", function () {
+                    $.ajax({
+                        url: "/set_pwd",
+                        type: "post",
+                        data: new FormData($("#pwd_form")[0]),
+                        contentType: false,
+                        processData: false,
+                        success: function (res) {
+                            if (res.code == 1000){
+                                swal({
+                                    title: res.msg,
+                                    type: "success",
+                                },function () {
+                                    location.href = "/login"
+                                })
+                            }else{
+                                $("#info").text(res.msg)
+                            }
+                        }
+                    })
+                })
+            })
+        </script>
+    </head>
+    <body>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 col-md-offset-4">
+                    <form id="pwd_form">
+                        {% csrf_token %}
+                        <div class="form-group">
+                            <label for="old_pwd">原密码</label>
+                            <input class="form-control" type="text" id="old_pwd" name="old_pwd" placeholder="请输入当前密码">
+                        </div>
+                        <div class="form-group">
+                            <label for="new_pwd">新密码</label>
+                            <input class="form-control" type="password" id="new_pwd" name="new_pwd" placeholder="请输入新密码">
+                        </div>
+                    </form>
+                    <button id="pwd_bt" class="btn btn-primary">修改密码</button>
+                    <span id="info" style="color: red">{{ msg }}</span>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
