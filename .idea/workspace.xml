@@ -5,7 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="16794e11-4bce-4e00-a031-734fb28f5058" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/BBS/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/BBS/settings.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BBS/wsgi.py" beforeDir="false" afterPath="$PROJECT_DIR$/BBS/wsgi.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -21,15 +21,6 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://C:/ProgramData/Anaconda3/envs/Bign/Lib/site-packages/django/contrib/auth/decorators.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="322">
-              <caret line="22" selection-start-line="22" selection-end-line="22" />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file pinned="false" current-in-tab="false">
         <entry file="file://C:/ProgramData/Anaconda3/envs/Bign/Lib/site-packages/django/core/handlers/base.py">
           <provider selected="true" editor-type-id="text-editor">
@@ -78,10 +69,22 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/BBS/settings.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1239">
-              <caret line="79" selection-start-line="79" selection-end-line="79" />
+            <state relative-caret-position="1242">
+              <caret line="81" column="69" selection-start-line="81" selection-start-column="69" selection-end-line="81" selection-end-column="69" />
               <folding>
                 <element signature="e#308#317#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/BBS/wsgi.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="247">
+              <caret line="17" lean-forward="true" selection-start-line="17" selection-end-line="17" />
+              <folding>
+                <element signature="e#220#229#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -156,13 +159,14 @@
         <option value="$PROJECT_DIR$/app01/models.py" />
         <option value="$PROJECT_DIR$/app01/views.py" />
         <option value="$PROJECT_DIR$/templates/aritcle_detail.html" />
+        <option value="$PROJECT_DIR$/BBS/wsgi.py" />
         <option value="$PROJECT_DIR$/BBS/settings.py" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="586" />
-    <option name="y" value="75" />
+    <option name="x" value="777" />
+    <option name="y" value="80" />
     <option name="width" value="1340" />
     <option name="height" value="905" />
   </component>
@@ -364,15 +368,15 @@
       <workItem from="1582886295569" duration="1875000" />
       <workItem from="1582948730645" duration="6591000" />
       <workItem from="1583029437526" duration="5765000" />
-      <workItem from="1583044209681" duration="1114000" />
+      <workItem from="1583044209681" duration="2517000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="102639000" />
+    <option name="totallyTimeSpent" value="104042000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="469" y="60" width="1072" height="724" extended-state="0" />
+    <frame x="622" y="64" width="1072" height="724" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49919224" visible="true" weight="0.26035503" />
@@ -548,9 +552,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/BBS/wsgi.py">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/media/static/avatar/4.jpg">
       <provider selected="true" editor-type-id="images" />
     </entry>
@@ -674,10 +675,20 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/BBS/wsgi.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="247">
+          <caret line="17" lean-forward="true" selection-start-line="17" selection-end-line="17" />
+          <folding>
+            <element signature="e#220#229#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/BBS/settings.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1239">
-          <caret line="79" selection-start-line="79" selection-end-line="79" />
+        <state relative-caret-position="1242">
+          <caret line="81" column="69" selection-start-line="81" selection-start-column="69" selection-end-line="81" selection-end-column="69" />
           <folding>
             <element signature="e#308#317#0" expanded="true" />
           </folding>
