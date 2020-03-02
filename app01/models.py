@@ -10,7 +10,7 @@ class User(AbstractUser):
     phone = models.CharField(max_length=11, null=True , blank=True)
     addr = models.CharField(max_length=32, null=True, blank=True)
     avatar = models.FileField(upload_to="avatar", default="avatar/default.png")
-    blog = models.OneToOneField(to="Blog", null=True)
+    blog = models.OneToOneField(to="Blog", on_delete=models.CASCADE)
 
     class Meta():
         verbose_name_plural = "用户表"
@@ -31,7 +31,7 @@ class Blog(models.Model):
 
 class Tag(models.Model):
     name = models.CharField(max_length=32)
-    blog = models.ForeignKey(to="Blog")
+    blog = models.ForeignKey(to="Blog", on_delete=models.CASCADE)
 
     def __str__(self):
         return self.name
@@ -42,7 +42,7 @@ class Tag(models.Model):
 
 class Classify(models.Model):
     name = models.CharField(max_length=32)
-    blog = models.ForeignKey(to="Blog")
+    blog = models.ForeignKey(to="Blog", on_delete=models.CASCADE)
 
     def __str__(self):
         return self.name + str(self.blog)
@@ -61,9 +61,9 @@ class Article(models.Model):
     down_count = models.IntegerField(default=0)
     comment_count = models.IntegerField(default=0)
 
-    blog = models.ForeignKey(to="Blog")
+    blog = models.ForeignKey(to="Blog", on_delete=models.CASCADE)
     tag = models.ManyToManyField(to="Tag", through="Article_Tag", through_fields=("article", "tag"))
-    classify = models.ForeignKey(to="Classify")
+    classify = models.ForeignKey(to="Classify", on_delete=None)
 
     def __str__(self):
         return self.title
@@ -73,16 +73,16 @@ class Article(models.Model):
 
 
 class Article_Tag(models.Model):
-    article = models.ForeignKey(to="Article")
-    tag = models.ForeignKey(to="Tag")
+    article = models.ForeignKey(to="Article", on_delete=None,)
+    tag = models.ForeignKey(to="Tag", on_delete=None,)
 
     class Meta():
         verbose_name_plural = "文章-标签表"
 
 
 class Up_Down(models.Model):
-    user = models.ForeignKey(to="User")
-    article = models.ForeignKey(to="Article")
+    user = models.ForeignKey(to="User", on_delete=None)
+    article = models.ForeignKey(to="Article", on_delete=models.CASCADE)
     is_up = models.BooleanField()
 
     class Meta():
@@ -90,10 +90,10 @@ class Up_Down(models.Model):
 
 
 class Comment(models.Model):
-    user = models.ForeignKey(to="User")
-    article = models.ForeignKey(to="Article")
+    user = models.ForeignKey(to="User", on_delete=None)
+    article = models.ForeignKey(to="Article", on_delete=models.CASCADE)
     content = models.CharField(max_length=255)
-    parent = models.ForeignKey(to="self", null=True)
+    parent = models.ForeignKey(to="self", on_delete=models.CASCADE)
     create_time = models.DateTimeField(auto_now_add=True)
 
     class Meta():

@@ -79,7 +79,12 @@ WSGI_APPLICATION = 'BBS.wsgi.application'
 import dj_database_url
 
 DATABASES = {
-    'default': dj_database_url.config(default='postgres://localhost')
+    'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'blog',
+        'USER': 'root',
+        'PASSWORD': ''
+    }
 }
 
 
