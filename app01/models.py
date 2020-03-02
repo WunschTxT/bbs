@@ -7,12 +7,12 @@ from django.contrib.auth.models import AbstractUser
 # Create your models here.
 
 class User(AbstractUser):
-    phone = models.CharField(max_length=11, null=True , blank=True)
+    phone = models.CharField(max_length=11, null=True, blank=True)
     addr = models.CharField(max_length=32, null=True, blank=True)
     avatar = models.FileField(upload_to="avatar", default="avatar/default.png")
-    blog = models.OneToOneField(to="Blog", null=True)
+    blog = models.OneToOneField(to="Blog", null=True, default=None)
 
-    class Meta():
+    class Meta:
         verbose_name_plural = "用户表"
 
 
@@ -25,7 +25,7 @@ class Blog(models.Model):
     def __str__(self):
         return self.name
 
-    class Meta():
+    class Meta:
         verbose_name_plural = "个人站点表"
 
 
@@ -36,7 +36,7 @@ class Tag(models.Model):
     def __str__(self):
         return self.name
 
-    class Meta():
+    class Meta:
         verbose_name_plural = "标签表"
 
 
@@ -47,7 +47,7 @@ class Classify(models.Model):
     def __str__(self):
         return self.name + str(self.blog)
 
-    class Meta():
+    class Meta:
         verbose_name_plural = "分类表"
 
 
@@ -62,13 +62,13 @@ class Article(models.Model):
     comment_count = models.IntegerField(default=0)
 
     blog = models.ForeignKey(to="Blog")
-    tag = models.ManyToManyField(to="Tag", through="Article_Tag", through_fields=("article", "tag"), null=True)
-    classify = models.ForeignKey(to="Classify", null=True)
+    tag = models.ManyToManyField(to="Tag", through="Article_Tag", through_fields=("article", "tag"), null=True, default=None)
+    classify = models.ForeignKey(to="Classify", null=True, default=None)
 
     def __str__(self):
         return self.title
 
-    class Meta():
+    class Meta:
         verbose_name_plural = "文章表"
 
 
@@ -76,7 +76,7 @@ class Article_Tag(models.Model):
     article = models.ForeignKey(to="Article")
     tag = models.ForeignKey(to="Tag")
 
-    class Meta():
+    class Meta:
         verbose_name_plural = "文章-标签表"
 
 
@@ -85,7 +85,7 @@ class Up_Down(models.Model):
     article = models.ForeignKey(to="Article")
     is_up = models.BooleanField()
 
-    class Meta():
+    class Meta:
         verbose_name_plural = "点赞点踩表"
 
 
@@ -93,10 +93,10 @@ class Comment(models.Model):
     user = models.ForeignKey(to="User")
     article = models.ForeignKey(to="Article")
     content = models.CharField(max_length=255)
-    parent = models.ForeignKey(to="self", null=True)
+    parent = models.ForeignKey(to="self", null=True, default=None)
     create_time = models.DateTimeField(auto_now_add=True)
 
-    class Meta():
+    class Meta:
         verbose_name_plural = "评论表"
 
 
