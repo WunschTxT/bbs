@@ -12,9 +12,9 @@ https://docs.djangoproject.com/en/1.11/ref/settings/
 
 import os
 import django_heroku
+
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.11/howto/deployment/checklist/
@@ -26,7 +26,6 @@ SECRET_KEY = 'o&8qadvqm@_soqgbuwf7--6v63x3dc@s!%04pi1nv)y_o!n1-@'
 DEBUG = False
 
 ALLOWED_HOSTS = ['*']
-
 
 # Application definition
 
@@ -73,20 +72,20 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'BBS.wsgi.application'
 
-
 # Database
 # https://docs.djangoproject.com/en/1.11/ref/settings/#databases
 import dj_database_url
-#
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.mysql',
-#         'NAME': 'blog',
-#         'USER': 'root',
-#         'PASSWORD': ''
-#     }
-# }
 
+#
+DATABASES = {
+    'default': {
+        # 'ENGINE': 'django.db.backends.mysql',
+        # 'NAME': 'blog',
+        # 'USER': 'root',
+        # 'PASSWORD': '',
+        'CONN_MAX_AGE': 500
+    }
+}
 
 # Password validation
 # https://docs.djangoproject.com/en/1.11/ref/settings/#auth-password-validators
@@ -106,7 +105,6 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
 # Internationalization
 # https://docs.djangoproject.com/en/1.11/topics/i18n/
 
@@ -119,7 +117,6 @@ USE_I18N = True
 USE_L10N = True
 
 USE_TZ = False
-
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.11/howto/static-files/
@@ -134,10 +131,9 @@ MEDIA_ROOT = os.path.join(BASE_DIR, "media")
 
 LOGIN_URL = "/login"
 
-
 AUTH_USER_MODEL = "app01.User"
 
-#数据库设置
+# 数据库设置
 if os.getenv('DATABASE_URL') is not None:
     DATABASES['default'] = dj_database_url.config()
 
