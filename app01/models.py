@@ -62,7 +62,7 @@ class Article(models.Model):
     comment_count = models.IntegerField(default=0)
 
     blog = models.ForeignKey(to="Blog")
-    tag = models.ManyToManyField(to="Tag", through="Article_Tag", through_fields=("article", "tag"), null=True, default=None)
+    tag = models.ManyToManyField(to="Tag", through="Article_Tag", through_fields=("article", "tag"))
     classify = models.ForeignKey(to="Classify", null=True, default=None)
 
     def __str__(self):

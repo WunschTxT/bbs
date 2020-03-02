@@ -262,8 +262,8 @@ def add_article(request):
         content = request.POST.get("content")
         classify_id = request.POST.get("classify")
         tag_list = request.POST.getlist("tag")
-        if not classify_id:
-            classify = models.Classify.objects.create(name='默认', blog_id=request.user.blog)
+        # if not classify_id:
+        #     classify = models.Classify.objects.create(name='默认', blog_id=request.user.blog)
         # if not tag_list:
         #     tag = models.Tag.objects.create(name='默认', blog_id=request.user.blog)
         soup = BeautifulSoup(content, "html.parser")
