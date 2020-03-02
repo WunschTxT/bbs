@@ -262,10 +262,6 @@ def add_article(request):
         content = request.POST.get("content")
         classify_id = request.POST.get("classify")
         tag_list = request.POST.getlist("tag")
-        # if not classify_id:
-        #     classify = models.Classify.objects.create(name='默认', blog_id=request.user.blog)
-        # if not tag_list:
-        #     tag = models.Tag.objects.create(name='默认', blog_id=request.user.blog)
         soup = BeautifulSoup(content, "html.parser")
         tags = soup.find_all()
         for i in tags:
@@ -273,13 +269,10 @@ def add_article(request):
                 i.decompose()
 
         abstract = soup.text[:150]
-        print('++++++++++++')
         print('classify_id', classify_id)
         article_obj = models.Article.objects.create(title=title, abstract=abstract, content=content,
                                                     blog=request.user.blog, classify_id=classify_id)
-        print('------------------')
         article_tag_ls = [models.Article_Tag(article=article_obj, tag_id=i) for i in tag_list]
-        print('*****************')
         models.Article_Tag.objects.bulk_create(article_tag_ls)
         return redirect("/black_home")
 
@@ -323,12 +316,3 @@ def edit_avatar(request):
     return render(request, "Backstage/edit_avatar.html", locals())
 
 
-# 支付成功
-@csrf_exempt
-def pay_success(request):
-    if request.method == "POST":
-        print(request.POST)
-
-        return HttpResponse("success")
-
-    return HttpResponse("error")
