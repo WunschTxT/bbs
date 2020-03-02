@@ -36,14 +36,12 @@ kombu==4.6.6
 MarkupPy==1.14
 monotonic==1.5
 more-itertools==8.0.0
-numpy==1.18.1
 odfpy==1.4.0
 openpyxl==3.0.2
 Pillow==6.2.1
 psycopg2==2.8.4
 pycparser==2.19
-pycryptodome==3.9.4
-pycryptodomex==3.9.4
+
 PyJWT==1.7.1
 PyMySQL==0.9.3
 pyOpenSSL==19.1.0
